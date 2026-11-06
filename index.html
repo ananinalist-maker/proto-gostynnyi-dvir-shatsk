@@ -730,6 +730,16 @@ textarea.inp{height:auto;min-height:92px;padding:13px 14px;line-height:1.45;resi
 /* знак над заголовками розділів: маленьке сонце над хвилями, не заходить на букви */
 .st::before{left:0;top:0;width:42px;height:42px;opacity:.7}
 @media (max-width:699px){ .st::before{left:0;top:0;width:34px;height:34px} }
+/* скляна підкладка під текст (Анна 06.11: білий текст не читався на світлому небі й воді) */
+.glass{position:relative;border-radius:22px;background:rgba(22,26,14,.42);-webkit-backdrop-filter:blur(16px) saturate(1.15);backdrop-filter:blur(16px) saturate(1.15);border:1px solid rgba(239,231,212,.24);box-shadow:0 24px 60px -28px rgba(0,0,0,.65)}
+.hero__glass{align-self:flex-start;width:fit-content;max-width:100%;padding:30px 40px 32px}
+.hero__glass .hero__sub{max-width:34em}
+.hero__glass h1{font-size:clamp(40px,5.2vw,80px)}
+.cover__glass{display:inline-block;max-width:calc(100vw - 32px);padding:30px clamp(18px,4vw,56px) 26px;color:var(--cream)}
+.cover__glass .wordmark{font-size:clamp(20px,5.2vw,78px);letter-spacing:.08em;text-indent:0}
+.cover__glass .cover__sub{margin-bottom:0;color:var(--cream)}
+.hero h1,.hero__sub,.hero__kick,.cover__glass .wordmark,.cover__glass .cover__sub{text-shadow:0 1px 14px rgba(0,0,0,.35)}
+@media (max-width:760px){ .hero__glass{width:auto;padding:20px 18px 22px;border-radius:18px;margin-inline:-4px} .hero__glass h1{font-size:clamp(30px,9.4vw,44px);letter-spacing:.04em} .cover__glass{padding:20px 14px 18px;border-radius:18px} .cover__glass .wordmark{font-size:clamp(18px,5.6vw,30px);letter-spacing:.05em} .cover__glass .cover__sub{letter-spacing:.14em} }
 /* чотири відгуки: два в ряд на планшеті, чотири на ноутбуці */
 @media (min-width:700px){ .rev__grid{grid-template-columns:repeat(2,minmax(0,1fr))} }
 @media (min-width:1100px){ .rev__grid{grid-template-columns:repeat(4,minmax(0,1fr))} }
@@ -842,12 +852,14 @@ textarea.inp{height:auto;min-height:92px;padding:13px 14px;line-height:1.45;resi
     </div>
     <div class="hero__scrim" aria-hidden="true"></div>
     <div class="hero__in">
+      <div class="glass hero__glass">
       <p class="hero__kick">Шацьк · Шацькі озера</p>
       <h1 id="hero-title"><span aria-hidden="true"><span class="l1">Гостинний</span><span class="l1">Двір</span><span class="l2">садиба біля Світязя</span></span><span class="sr">Садиба Гостинний Двір у Шацьку біля озера Світязь</span></h1>
       <p class="hero__sub">Котедж на чотири номери за 350 метрів від Світязя: тихе подвір'я з альтанками і мангалами, своя кухня, пляж за сосновим лісом.</p>
       <div class="hero__cta">
         <a class="btn btn--line" href="#bron">Забронювати номер</a>
         <a class="hero__more" href="#rooms">Номери і ціни</a>
+      </div>
       </div>
     </div>
     <div class="follow" aria-label="Зв'язок">
@@ -890,8 +902,10 @@ textarea.inp{height:auto;min-height:92px;padding:13px 14px;line-height:1.45;resi
 
 <section class="cover" aria-label="Гостинний Двір">
   <div class="cover__bg" aria-hidden="true"></div>
-  <p class="wordmark" data-rv><span aria-hidden="true"><svg class="wm" viewBox="0 0 64 64"><use href="#i-mark"/></svg>Гостинний Двір</span><span class="sr">Гостинний Двір</span></p>
-  <p class="cover__sub" data-rv>садиба біля озера Світязь · Шацьк</p>
+  <div class="glass cover__glass" data-rv>
+  <p class="wordmark"><span aria-hidden="true"><svg class="wm" viewBox="0 0 64 64"><use href="#i-mark"/></svg>Гостинний Двір</span><span class="sr">Гостинний Двір</span></p>
+  <p class="cover__sub">садиба біля озера Світязь · Шацьк</p>
+  </div>
   <p class="chip">Настроєве зображення для прототипу</p>
 </section>
 
